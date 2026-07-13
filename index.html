@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI 성격 유형 검사 (MBTI)</title>
+  <title>AI 성격 유형 검사</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,17 +11,23 @@
   <div class="container">
     <!-- 시작 화면 -->
     <div id="start-screen" class="screen active">
-      <div class="icon">🧠</div>
-      <h1>AI 성격 유형 검사</h1>
-      <p>쉽고 빠른 질문을 통해 당신의 진짜 MBTI 성향을 분석합니다.</p>
-      <button class="primary" onclick="startQuiz()">검사 시작하기</button>
+      <div class="main-glow"></div>
+      <div class="icon">✨</div>
+      <h1>AI 심층 성격 유형 검사</h1>
+      <p>당신의 선택 속에 숨겨진 인지 기능과 행동 패턴을 고도화된 성향 매트릭스로 분석합니다.</p>
+      <button class="primary-btn" onclick="startQuiz()">
+        <span>테스트 시작하기</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
     </div>
 
     <!-- 질문 화면 -->
     <div id="quiz-screen" class="screen">
       <div class="progress-container">
-        <div class="progress-bar"><i id="progress-line"></i></div>
-        <span id="progress-text">1 / 12</span>
+        <span id="progress-text">01 / 12</span>
+        <div class="progress-bar">
+          <i id="progress-line"></i>
+        </div>
       </div>
       <h2 id="question-text">질문 내용이 여기에 표시됩니다.</h2>
       <div class="answers">
@@ -32,17 +38,25 @@
 
     <!-- 로딩 화면 -->
     <div id="loading-screen" class="screen">
-      <div class="spinner"></div>
-      <p id="loading-text">답변을 기반으로 성향 매트릭스 분석 중...</p>
+      <div class="loader-wrap">
+        <div class="spinner"></div>
+        <div class="spinner-inner"></div>
+      </div>
+      <p id="loading-text">답변 기반 성향 매트릭스 동기화 중...</p>
     </div>
 
     <!-- 결과 화면 -->
     <div id="result-screen" class="screen">
-      <div class="badge">YOUR TYPE</div>
-      <h1 id="result-type">ISFP</h1>
-      <h3 id="result-title">호기심 많은 예술가</h3>
-      <p id="result-desc">결과에 대한 상세 설명이 여기에 들어갑니다.</p>
-      <button class="ghost" onclick="restartQuiz()">다시 테스트하기</button>
+      <div class="badge">ANALYSIS RESULT</div>
+      <h1 id="result-type">INFJ</h1>
+      <h3 id="result-title">선의의 옹호자</h3>
+      <div class="desc-card">
+        <p id="result-desc">결과에 대한 상세 설명이 여기에 들어갑니다.</p>
+      </div>
+      <button class="ghost-btn" onclick="restartQuiz()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        다시 테스트하기
+      </button>
     </div>
   </div>
 
