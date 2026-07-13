@@ -1,0 +1,71 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0e1119;
+  --panel: #181c28;
+  --bg2: #232838;
+  --ink: #e7eaef;
+  --muted: #7d869a;
+  --accent: #4ce0c1;
+  --accent2: #8169ff;
+  --line: #2a2f42;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  text-align: center;
+}
+.screen { display: none; }
+.screen.active { display: block; }
+
+.icon { font-size: 64px; margin-bottom: 20px; }
+h1 { font-size: 28px; margin-bottom: 12px; font-weight: 700; }
+p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 30px; }
+
+button {
+  width: 100%;
+  border: 0;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.primary { background: var(--accent); color: var(--bg); }
+.primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.ghost { background: var(--bg2); color: var(--ink); border: 1px solid var(--line); }
+.ghost:hover { background: #2a3144; }
+
+/* 퀴즈 스타일 */
+.progress-container { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
+.progress-bar { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+#progress-line { display: block; height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
+#progress-text { font-size: 13px; color: var(--muted); min-width: 45px; text-align: right; }
+h2 { font-size: 20px; line-height: 1.5; margin-bottom: 40px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+.answers { display: flex; flex-direction: column; gap: 12px; }
+.answer-btn { background: var(--bg2); border: 1px solid var(--line); color: var(--ink); text-align: left; padding: 18px 24px; }
+.answer-btn:hover { border-color: var(--accent); background: #2a3144; }
+
+/* 로딩 스피너 */
+.spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 30px auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* 결과창 */
+.badge { display: inline-block; background: rgba(76, 224, 193, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
+#result-type { font-size: 48px; color: var(--accent); letter-spacing: 2px; margin-bottom: 4px; }
+#result-title { font-size: 18px; color: var(--ink); margin-bottom: 20px; }
