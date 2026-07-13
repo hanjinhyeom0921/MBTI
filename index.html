@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 성격 유형 검사 (MBTI)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- 시작 화면 -->
+    <div id="start-screen" class="screen active">
+      <div class="icon">🧠</div>
+      <h1>AI 성격 유형 검사</h1>
+      <p>쉽고 빠른 질문을 통해 당신의 진짜 MBTI 성향을 분석합니다.</p>
+      <button class="primary" onclick="startQuiz()">검사 시작하기</button>
+    </div>
+
+    <!-- 질문 화면 -->
+    <div id="quiz-screen" class="screen">
+      <div class="progress-container">
+        <div class="progress-bar"><i id="progress-line"></i></div>
+        <span id="progress-text">1 / 12</span>
+      </div>
+      <h2 id="question-text">질문 내용이 여기에 표시됩니다.</h2>
+      <div class="answers">
+        <button class="answer-btn" id="ans-a" onclick="selectAnswer('A')">선택지 A</button>
+        <button class="answer-btn" id="ans-b" onclick="selectAnswer('B')">선택지 B</button>
+      </div>
+    </div>
+
+    <!-- 로딩 화면 -->
+    <div id="loading-screen" class="screen">
+      <div class="spinner"></div>
+      <p id="loading-text">답변을 기반으로 성향 매트릭스 분석 중...</p>
+    </div>
+
+    <!-- 결과 화면 -->
+    <div id="result-screen" class="screen">
+      <div class="badge">YOUR TYPE</div>
+      <h1 id="result-type">ISFP</h1>
+      <h3 id="result-title">호기심 많은 예술가</h3>
+      <p id="result-desc">결과에 대한 상세 설명이 여기에 들어갑니다.</p>
+      <button class="ghost" onclick="restartQuiz()">다시 테스트하기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
