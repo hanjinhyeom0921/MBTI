@@ -49,7 +49,6 @@ function showQuestion() {
   const pct = (currentIdx / questions.length) * 100;
   document.getElementById('progress-line').style.width = pct + '%';
   
-  // 문자열 포맷팅 오류 완전 차단을 위해 표준 연산법 사용
   const curNum = String(currentIdx + 1).padStart(2, '0');
   const totalNum = String(questions.length).padStart(2, '0');
   document.getElementById('progress-text').textContent = curNum + " / " + totalNum;
