@@ -1,22 +1,22 @@
 // 질문 데이터 (총 20문항, 각 성향별 5문항씩 배치하여 정밀도 향상)
 const questions = [
   // 1~5: EI (외향 vs 내향)
-  { q: "주말에 갑작스러운 자유 시간이 생겼을 때 나의 행동은?", a: "기다렸다는 듯 연락처를 뒤져 친구들과 모임을 잡는다.", b: "밀린 OTT를 보거나 침대 위에서 혼자만의 충전을 즐긴다.", type: "EI", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=500&auto=format&fit=crop" },
-  { q: "새로운 사람들과 가득 찬 낯선 모임에 참석했을 때 나는?", a: "먼저 인사를 건네며 주도적으로 대화를 이끌어 나간다.", b: "말을 걸어올 때까지 조용히 자리를 지키며 타이밍을 본다.", type: "EI", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=500&auto=format&fit=crop" },
-  { q: "팀 프로젝트나 조별 과제를 할 때 내가 선호하는 역할은?", a: "의견을 취합하고 브리핑을 맡는 등 소통 중심의 역할", b: "자료를 조사하고 묵묵히 기획서를 다듬는 등 연구 중심의 역할", type: "EI", img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=500&auto=format&fit=crop" },
-  { q: "스트레스를 심하게 받은 날, 나를 더 위로해 주는 것은?", a: "마음 맞는 사람들과 시끌벅적하게 수다 떨며 털어내기", b: "방문을 닫고 내가 좋아하는 음악을 들으며 조용히 사색하기", type: "EI", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=500&auto=format&fit=crop" },
-  { q: " 타인이 평가하는 나의 전반적인 커뮤니케이션 에너지는?", a: "감정 표현이 솔직하고 활기찬 에너지가 돋보이는 편이다.", b: "신중하고 차분하며 절제된 톤앤매너를 유지하는 편이다.", type: "EI", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=500&auto=format&fit=crop" },
+  { q: "주말에 갑작스러운 자유 시간이 생겼을 때 나의 행동은?", a: "기다렸다는 듯 연락처를 뒤져 친구들과 모임을 잡는다.", b: "밀린 OTT를 보거나 침대 위에서 혼자만의 충전을 즐긴다.", 입력: "EI", img: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=500&auto=format&fit=crop" },
+  { q: "새로운 사람들과 가득 찬 낯선 모임에 참석했을 때 나는?", a: "먼저 인사를 건네며 주도적으로 대화를 이끌어 나간다.", b: "말을 걸어올 때까지 조용히 자리를 지키며 타이밍을 본다.", 입력: "EI", img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=500&auto=format&fit=crop" },
+  { q: "팀 프로젝트나 조별 과제를 할 때 내가 선호하는 역할은?", a: "의견을 취합하고 브리핑을 맡는 등 소통 중심의 역할", b: "자료를 조사하고 묵묵히 기획서를 다듬는 등 연구 중심의 역할", 입력: "EI", img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=500&auto=format&fit=crop" },
+  { q: "스트레스를 심하게 받은 날, 나를 더 위로해 주는 것은?", a: "마음 맞는 사람들과 시끌벅적하게 수다 떨며 털어내기", b: "방문을 닫고 내가 좋아하는 음악을 들으며 조용히 사색하기", 입력: "EI", img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=500&auto=format&fit=crop" },
+  { q: " 타인이 평가하는 나의 전반적인 커뮤니케이션 에너지는?", a: "감정 표현이 솔직하고 활기찬 에너지가 돋보이는 편이다.", b: "신중하고 차분하며 절제된 톤앤매너를 유지하는 편이다.", 입력: "EI", img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=500&auto=format&fit=crop" },
 
   // 6~10: NS (직관 vs 감각)
-  { q: "아무 생각 없이 길을 걷던 중 문득 떠오르는 생각은?", a: "만약 인공지능이 세계를 지배하면 인류는 어떻게 생존할까?", b: "오늘 저녁 메뉴나 당장 눈앞에 보이는 독특한 건물 풍경", type: "NS", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop" },
-  { q: "SF 영화나 몰입감 넘치는 소설을 감상할 때 내 시선은?", a: "세계관에 담긴 은유나 감독이 숨겨놓은 철학적 메시지를 상상한다.", b: "스토리의 개연성이나 화려한 컴퓨터 그래픽 연출에 집중한다.", type: "NS", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=500&auto=format&fit=crop" },
-  { q: "새로운 기술이나 가전제품을 구매했을 때 나는?", a: "설명서는 제쳐두고 일단 이것저것 만져보며 기능을 유추해 본다.", b: "기본 안내 책자나 퀵 가이드를 정독한 뒤 안전하게 켠다.", type: "NS", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500&auto=format&fit=crop" },
-  { q: "평소 가치관이나 아이디어를 설명할 때 나의 서술 방식은?", a: "직관적 느낌이나 비유, '만약에~'라는 가상의 개념을 섞어 설명한다.", b: "실제 경험한 가시적인 지표와 정확한 팩트를 기반으로 말한다.", type: "NS", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" },
-  { q: "하늘에 떠 있는 독특한 모양의 구름을 보았을 때 나는?", a: "어떤 신비로운 동물이나 거대한 우주선 같다는 상상에 빠진다.", b: "날씨가 흐려지려나 보다 하고 직관적인 날씨 변화를 생각한다.", type: "NS", img: "https://images.unsplash.com/photo-1532178910-7815d6919875?q=80&w=500&auto=format&fit=crop" },
+  { q: "아무 생각 없이 길을 걷던 중 문득 떠오르는 생각은?", a: "만약 인공지능이 세계를 지배하면 인류는 어떻게 생존할까?", b: "오늘 저녁 메뉴나 당장 눈앞에 보이는 독특한 건물 풍경", 입력: "NS", img: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=500&auto=format&fit=crop" },
+  { q: "SF 영화나 몰입감 넘치는 소설을 감상할 때 내 시선은?", a: "세계관에 담긴 은유나 감독이 숨겨놓은 철학적 메시지를 상상한다.", b: "스토리의 개연성이나 화려한 컴퓨터 그래픽 연출에 집중한다.", 입력: "NS", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=500&auto=format&fit=crop" },
+  { q: "새로운 기술이나 가전제품을 구매했을 때 나는?", a: "설명서는 제쳐두고 일단 이것저것 만져보며 기능을 유추해 본다.", b: "기본 안내 책자나 퀵 가이드를 정독한 뒤 안전하게 켠다.", 입력: "NS", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500&auto=format&fit=crop" },
+  { q: "평소 가치관이나 아이디어를 설명할 때 나의 서술 방식은?", a: "직관적 느낌이나 비유, '만약에~'라는 가상의 개념을 섞어 설명한다.", b: "실제 경험한 가시적인 지표와 정확한 팩트를 기반으로 말한다.", 입력: "NS", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" },
+  { q: "하늘에 떠 있는 독특한 모양의 구름을 보았을 때 나는?", a: "어떤 신비로운 동물이나 거대한 우주선 같다는 상상에 빠진다.", b: "날씨가 흐려지려나 보다 하고 직관적인 날씨 변화를 생각한다.", 입력: "NS", img: "https://images.unsplash.com/photo-1532178910-7815d6919875?q=80&w=500&auto=format&fit=crop" },
 
   // 11~15: TF (사고 vs 감정)
-  { q: "친구가 '너무 우울해서 충동적으로 빵을 샀어'라고 말한다면?", a: "맛있는 빵을 먹고 기분 풀라며 무슨 빵을 샀는지 물어본다.", b: "무슨 일이 있었는지, 왜 우울한지 감정에 공감하며 토닥인다.", type: "TF", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" },
-  { q: "인생의 큰 고민을 털어놓는 지인에게 내가 주로 주는 것은?", a: "상황을 냉철하게 분석한 뒤 도출해낸 현실적인 해결 대안", b: "진심 어린 위로와 '네 잘못이 아니야'라는 정서적 지지", type: "TF", img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=500&auto=format&fit=crop" },
+  { q: "친구가 '너무 우울해서 충동적으로 빵을 샀어'라고 말한다면?", a: "맛있는 빵을 먹고 기분 풀라며 무슨 빵을 샀는지 물어본다.", b: "무슨 일이 있었는지, 왜 우울한지 감정에 공감하며 토닥인다.", 입력: "TF", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop" },
+  { q: "인생의 큰 고민을 털어놓는 지인에게 내가 주로 주는 것은?", a: "상황을 냉철하게 분석한 뒤 도출해낸 현실적인 해결 대안", b: "진심 어린 위로와 '네 잘못이 아니야'라는 정서적 지지", 입력: "TF", img: "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=500&auto=format&fit=crop" },
   { q: "예상치 못한 위기나 고난이 발생했을 때 내 뇌리에 먼저 스치는 생각은?", a: "이 문제를 정확히 타개할 프로세스와 논리적 인과관계 분석", b: "함께 얽힌 사람들의 심리적 타격과 감정적인 수습 방안", type: "TF", img: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=500&auto=format&fit=crop" },
   { q: "주변 사람이 큰 실수를 저질렀을 때 내가 속으로 드는 생각은?", a: "어쩌다 저런 실수가 발생했는지 시스템이나 절차적 원인 분석", b: "속상하겠다 혹은 주변 사람들의 눈치가 보여 얼마나 당황스러울까 하는 염려", type: "TF", img: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=500&auto=format&fit=crop" },
   { q: "친한 동료가 열심히 준비한 기획서에 오류가 가득할 때 나는?", a: "발표 전에 문제를 고쳐야 하므로 잘못된 데이터 리스트를 즉시 피드백한다.", b: "상처받지 않게 노력한 부분을 먼저 칭찬한 뒤 조심스럽게 의견을 건넨다.", type: "TF", img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=500&auto=format&fit=crop" },
@@ -141,3 +141,15 @@ function changeScreen(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(screenId).classList.add('active');
 }
+// 이미지가 깨졌을 때 자동으로 처리하는 로직
+document.addEventListener('error', function (e) {
+  if (e.target.tagName.toLowerCase() === 'img') {
+    // 깨진 이미지 대신 투명한 임시 이미지로 대체하고 스타일 처리
+    e.target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"/>';
+    e.target.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    e.target.parentElement.style.display = 'flex';
+    e.target.parentElement.style.alignItems = 'center';
+    e.target.parentElement.style.justifyContent = 'center';
+    e.target.parentElement.setAttribute('data-error', 'Visualizing...');
+  }
+}, true);
