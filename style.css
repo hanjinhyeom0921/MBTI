@@ -1,71 +1,123 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --bg: #0e1119;
-  --panel: #181c28;
-  --bg2: #232838;
-  --ink: #e7eaef;
-  --muted: #7d869a;
+  --bg-gradient: radial-gradient(circle at 50% 50%, #16192b 0%, #090a10 100%);
+  --panel: rgba(22, 26, 41, 0.65);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --ink: #f1f3f7;
+  --muted: #8b96ad;
+  --accent-grad: linear-gradient(135deg, #4ce0c1 0%, #3ca0ff 50%, #8169ff 100%);
   --accent: #4ce0c1;
-  --accent2: #8169ff;
-  --line: #2a2f42;
+  --btn-bg: #1f2438;
 }
+
 body {
-  background: var(--bg);
+  background: var(--bg-gradient);
   color: var(--ink);
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
+  overflow-x: hidden;
 }
+
+/* 메인 프레임 */
 .container {
   width: 100%;
-  max-width: 500px;
+  max-width: 520px;
   background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  padding: 40px 30px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-  text-align: center;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--panel-border);
+  border-radius: 28px;
+  padding: 50px 36px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
-.screen { display: none; }
+
+.screen { display: none; animation: fadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
 .screen.active { display: block; }
 
-.icon { font-size: 64px; margin-bottom: 20px; }
-h1 { font-size: 28px; margin-bottom: 12px; font-weight: 700; }
-p { font-size: 15px; color: var(--muted); line-height: 1.6; margin-bottom: 30px; }
-
-button {
-  width: 100%;
-  border: 0;
-  padding: 16px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.primary { background: var(--accent); color: var(--bg); }
-.primary:hover { opacity: 0.9; transform: translateY(-1px); }
-.ghost { background: var(--bg2); color: var(--ink); border: 1px solid var(--line); }
-.ghost:hover { background: #2a3144; }
 
-/* 퀴즈 스타일 */
-.progress-container { display: flex; align-items: center; gap: 12px; margin-bottom: 30px; }
-.progress-bar { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
-#progress-line { display: block; height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
-#progress-text { font-size: 13px; color: var(--muted); min-width: 45px; text-align: right; }
-h2 { font-size: 20px; line-height: 1.5; margin-bottom: 40px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
-.answers { display: flex; flex-direction: column; gap: 12px; }
-.answer-btn { background: var(--bg2); border: 1px solid var(--line); color: var(--ink); text-align: left; padding: 18px 24px; }
-.answer-btn:hover { border-color: var(--accent); background: #2a3144; }
+/* 시작 화면 이펙트 */
+.main-glow {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: var(--accent-grad);
+  filter: blur(120px);
+  opacity: 0.15;
+  top: -100px; left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
 
-/* 로딩 스피너 */
-.spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 30px auto; }
+.icon { font-size: 56px; margin-bottom: 24px; filter: drop-shadow(0 0 15px rgba(76, 224, 193, 0.3)); }
+h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; background: linear-gradient(120deg, #fff 40%, var(--muted)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+p { font-size: 15px; color: var(--muted); line-height: 1.65; margin-bottom: 36px; word-break: keep-all; }
+
+/* 메인 버튼 스타일 */
+.primary-btn {
+  background: var(--accent-grad);
+  color: #090a10;
+  border: 0; padding: 18px 28px; border-radius: 16px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 12px 24px rgba(76, 224, 193, 0.25);
+  transition: all 0.3s; width: 100%;
+}
+.primary-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(76, 224, 193, 0.35); }
+
+.ghost-btn {
+  background: transparent; color: var(--muted); border: 1px solid var(--panel-border);
+  padding: 14px; border-radius: 14px; font-size: 14px; font-weight: 600; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; transition: all 0.2s;
+}
+.ghost-btn:hover { color: var(--ink); background: rgba(255,255,255,0.04); border-color: var(--muted); }
+
+/* 프로그레스 바 */
+.progress-container { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 36px; }
+#progress-text { font-size: 13px; font-weight: 700; color: var(--accent); font-family: monospace; }
+.progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; }
+#progress-line { display: block; height: 100%; background: var(--accent-grad); width: 0%; transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* 질문 및 선택지 */
+h2 { font-size: 21px; font-weight: 700; line-height: 1.55; margin-bottom: 40px; min-height: 70px; display: flex; align-items: center; justify-content: center; word-break: keep-all; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.answers { display: flex; flex-direction: column; gap: 14px; }
+.answer-btn {
+  background: var(--btn-bg); border: 1px solid var(--panel-border); color: var(--ink);
+  text-align: left; padding: 20px 24px; border-radius: 16px; font-size: 15px; font-weight: 500;
+  line-height: 1.45; cursor: pointer; transition: all 0.25s ease; width: 100%; word-break: keep-all;
+}
+.answer-btn:hover {
+  border-color: transparent; background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 20px rgba(76, 224, 193, 0.1);
+  transform: translateY(-1px);
+}
+
+/* 로딩 애니메이션 */
+.loader-wrap { position: relative; width: 60px; height: 60px; margin: 40px auto; }
+.spinner { width: 100%; height: 100%; border: 3px solid rgba(255,255,255,0.03); border-top-color: var(--accent); border-radius: 50%; animation: spin 1.2s linear infinite; }
+.spinner-inner { position: absolute; inset: 8px; border: 3px solid transparent; border-bottom-color: #8169ff; border-radius: 50%; animation: spin-reverse 0.9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin-reverse { to { transform: rotate(-360deg); } }
+#loading-text { font-size: 14px; color: var(--muted); letter-spacing: 0.5px; }
 
-/* 결과창 */
-.badge { display: inline-block; background: rgba(76, 224, 193, 0.1); color: var(--accent); padding: 6px 14px; border-radius: 99px; font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
-#result-type { font-size: 48px; color: var(--accent); letter-spacing: 2px; margin-bottom: 4px; }
-#result-title { font-size: 18px; color: var(--ink); margin-bottom: 20px; }
+/* 결과 영역 프리미엄 레이아웃 */
+.badge { display: inline-block; background: rgba(76, 224, 193, 0.08); color: var(--accent); padding: 6px 16px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 16px; border: 1px solid rgba(76, 224, 193, 0.15); }
+#result-type { font-size: 56px; font-weight: 900; letter-spacing: 4px; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; filter: drop-shadow(0 4px 12px rgba(76,224,193,0.15)); }
+#result-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 24px; }
+.desc-card { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--panel-border); border-radius: 18px; padding: 24px; text-align: left; margin-bottom: 36px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.2); }
+#result-desc { font-size: 14.5px; color: #b6c2da; line-height: 1.75; margin-bottom: 0; }
+
+@media (max-width: 480px) {
+  .container { padding: 40px 24px; border-radius: 24px; }
+  h1 { font-size: 25px; }
+  h2 { font-size: 19px; }
+}
